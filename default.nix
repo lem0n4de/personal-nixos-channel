@@ -10,8 +10,8 @@ rec {
   };
 
   config = {
-    environment.systemPackages = environment.systemPackages ++ [
-      (mkIf cfg.personal.mono (callPackage ./modules/mono.nix {}))
+    environment.systemPackages = [
+      (mkIf cfg.mono (callPackage ./modules/mono.nix {}))
     ];
   };
 }

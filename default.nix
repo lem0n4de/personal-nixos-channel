@@ -1,11 +1,17 @@
-{
-  config ? {}, ...
-}:
+{ lib, pkgs, config, ... }:
 
+with lib;
 let
-  pkgs = import <nixpkgs> {};
-  inherit (pkgs) callPackage;
+  cfg = config.personal;
 in
 rec {
-  my-mono = callPackage ./modules/mono.nix {};
+  options.personal = {
+    mono = mkEnableOption "mono-5.20";
+  };
+
+  config = mkIf (cfg.users != {}) {
+    environment.systemPackages = environment.systemPackages ++ [
+      (callPackage ./modules/mono.nix {})
+    ];
+  };
 }

@@ -6,7 +6,7 @@ let
 in
 rec {
   options.personal.enable = mkEnableOption "Enable personal channel.";
-  imports = mkIf cfg.enable [
+  imports = [
     ./modules/mono.nix
   ];
 }

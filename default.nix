@@ -5,13 +5,8 @@ let
   cfg = config.personal;
 in
 rec {
-  options.personal = {
-    mono = mkEnableOption "mono-5.20";
-  };
-
-  config = {
-    environment.systemPackages = [
-      (mkIf cfg.mono (pkgs.callPackage ./modules/mono.nix {}))
-    ];
-  };
+  options.personal.enable = mkEnableOption "Enable personal channel.";
+  imports = mkIf cfg.enable [
+    ./modules/mono.nix
+  ];
 }

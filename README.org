@@ -1,0 +1,11 @@
+* personal-channel
+This is my personal nix channel. *It is not guarenteed to work with yours.*
+
+** Usage
+   Add this to your channels, use =sudo= to use it with configuration.nix.
+   #+BEGIN_SRC shell
+nix-channel --add https://github.com/lem0n4de/personal-nixos-channel/archive/master.tar.gz personal-channel
+nix-channel --update
+   #+END_SRC
+   
+   Then you can install packages with =nix-env -f "<personal-channel>" -Ai package=. 

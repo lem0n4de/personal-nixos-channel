@@ -1,11 +1,24 @@
+#+TITLE: Personal channel of lem0n4de
 * personal-channel
-This is my personal nix channel. *It is not guarenteed to work with yours.*
+This is my personal nix channel. *It is not guarenteed to work with yours.* For more information about modules and building your own channel,
+start from [[https://nixos.wiki/wiki/Module][here]] and =man nix-channel=.
 
-** Usage
-   Add this to your channels, use =sudo= to use it with configuration.nix.
-   #+BEGIN_SRC shell
+** Setup
+Add this to your channels, use =sudo= to use it with configuration.nix.
+#+BEGIN_SRC shell
 nix-channel --add https://github.com/lem0n4de/personal-nixos-channel/archive/master.tar.gz personal-channel
 nix-channel --update
-   #+END_SRC
-   
-   Then you can install packages with =nix-env -f "<personal-channel>" -Ai package=. 
+#+END_SRC
+ 
+** Usage
+- Install packages with =nix-env -f "<personal-channel>" -Ai package=.
+- Or add =imports = [ <personal-channel> ];= and
+  =personal./module-name-here/.enable = true;= in your configuration.nix like =personal.mono.enable = true;=.   
+
+** Testing
+    Use this command with the vm.nix. Username and password are both =vm=.
+#+BEGIN_SRC shell
+NIXOS_CONFIG=/path/to/vm.nix nixos-rebuild -I personal-channel=/path/to/this/repo build-vm --fast
+./result/bin/run-vmhost-vm
+#+END_SRC
+For more information check out [[https://nixos.wiki/wiki/NixOS:extend_NixOS#Testing_Configuration_Changes_in_a_VM][NixOS:Extend NixOS]].

@@ -1,4 +1,4 @@
-{ lib, pkgs, config, callPackage, ... }:
+{ lib, pkgs, config, ... }:
 
 with lib;
 let
@@ -11,7 +11,7 @@ rec {
 
   config = {
     environment.systemPackages = [
-      (mkIf cfg.mono (callPackage ./modules/mono.nix {}))
+      (mkIf cfg.mono (pkgs.callPackage ./modules/mono.nix {}))
     ];
   };
 }

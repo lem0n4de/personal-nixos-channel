@@ -9,9 +9,9 @@ rec {
     mono = mkEnableOption "mono-5.20";
   };
 
-  config = mkIf (cfg.users != {}) {
+  config = {
     environment.systemPackages = environment.systemPackages ++ [
-      (callPackage ./modules/mono.nix {})
+      (mkIf cfg.personal.mono (callPackage ./modules/mono.nix {}))
     ];
   };
 }

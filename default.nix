@@ -1,9 +1,9 @@
-{ nixpkgs ? import <nixpkgs> {} }:
-
+{ pkgs ? import <nixpkgs> {} }:
 
 let
-  inherit (nixpkgs) callPackage;
+  inherit (pkgs) callPackage;
 in
+
 rec {
-  my-mono = callPackage ./modules/mono.nix;
+  my-mono = callPackage ./modules/mono.nix {};
 }

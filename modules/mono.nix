@@ -1,9 +1,9 @@
-with import <nixpkgs> {};
+{ stdenv, fetchurl, gcc, cmake, which, python, perl, gettext, curl, autoconf, automake, libtool, git }:
 
 let
   version = "5.20.1.27";
 in
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   name = "mono-${version}";
 
   src = fetchurl {

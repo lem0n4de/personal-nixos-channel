@@ -1,5 +1,6 @@
 { lib, pkgs, config, stdenv, fetchurl, gcc, cmake, which, python, perl, gettext, curl, autoconf, automake, libtool, git }:
 
+with lib;
 let
   version = "5.20.1.27";
   mono = stdenv.mkDerivation rec {

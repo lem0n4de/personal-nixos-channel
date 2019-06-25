@@ -1,6 +1,9 @@
-{config ? {}, pkgs ? import <nixpkgs> {} , ...}:
+{
+  config ? {}, ...
+}:
 
 let
+  pkgs = import <nixpkgs> {};
   inherit (pkgs) callPackage;
 in
 rec {

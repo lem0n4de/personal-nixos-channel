@@ -1,4 +1,4 @@
- {config, pkgs, ...}:
+  {config, pkgs, ...}:
  {
    imports = [ <personal-channel> ];
    # You need to configure a root filesytem
